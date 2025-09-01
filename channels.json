@@ -1,0 +1,326 @@
+[
+  {
+    "name": "Channel 1",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1.m3u8"
+  },
+  {
+    "name": "Channel 2",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/2.m3u8"
+  },
+  {
+    "name": "Channel 3",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/3.m3u8"
+  },
+  {
+    "name": "Channel 4",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/4.m3u8"
+  },
+  {
+    "name": "Channel 6",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/6.m3u8"
+  },
+  {
+    "name": "Channel 7",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/7.m3u8"
+  },
+  {
+    "name": "Channel 8",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/8.m3u8"
+  },
+  {
+    "name": "Channel 10",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/10.m3u8"
+  },
+  {
+    "name": "Channel 11",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/11.m3u8"
+  },
+  {
+    "name": "Channel 12",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/12.m3u8"
+  },
+  {
+    "name": "Channel 13",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/13.m3u8"
+  },
+  {
+    "name": "Channel 14",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/14.m3u8"
+  },
+  {
+    "name": "Channel 15",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/15.m3u8"
+  },
+  {
+    "name": "Channel 16",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/16.m3u8"
+  },
+  {
+    "name": "Channel 19",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/19.m3u8"
+  },
+  {
+    "name": "Channel 23",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/23.m3u8"
+  },
+  {
+    "name": "Channel 24",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/24.m3u8"
+  },
+  {
+    "name": "Channel 26",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/26.m3u8"
+  },
+  {
+    "name": "Channel 31",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/31.m3u8"
+  },
+  {
+    "name": "Channel 32",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/32.m3u8"
+  },
+  {
+    "name": "Channel 33",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/33.m3u8"
+  },
+  {
+    "name": "Channel 34",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/34.m3u8"
+  },
+  {
+    "name": "Channel 35",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/35.m3u8"
+  },
+  {
+    "name": "Channel 41",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/41.m3u8"
+  },
+  {
+    "name": "Channel 42",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/42.m3u8"
+  },
+  {
+    "name": "Channel 43",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/43.m3u8"
+  },
+  {
+    "name": "Channel 44",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/44.m3u8"
+  },
+  {
+    "name": "Channel 45",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/45.m3u8"
+  },
+  {
+    "name": "Channel 49",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/49.m3u8"
+  },
+  {
+    "name": "Channel 50",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/50.m3u8"
+  },
+  {
+    "name": "Channel 51",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/51.m3u8"
+  },
+  {
+    "name": "Channel 52",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/52.m3u8"
+  },
+  {
+    "name": "Channel 53",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/53.m3u8"
+  },
+  {
+    "name": "Channel 54",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/54.m3u8"
+  },
+  {
+    "name": "Channel 55",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/55.m3u8"
+  },
+  {
+    "name": "Channel 56",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/56.m3u8"
+  },
+  {
+    "name": "Channel 88",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/88.m3u8"
+  },
+  {
+    "name": "Channel 91",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/91.m3u8"
+  },
+  {
+    "name": "Channel 92",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/92.m3u8"
+  },
+  {
+    "name": "Channel 93",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/93.m3u8"
+  },
+  {
+    "name": "Channel 106",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/106.m3u8"
+  },
+  {
+    "name": "Channel 126",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/126.m3u8"
+  },
+  {
+    "name": "Channel 127",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/127.m3u8"
+  },
+  {
+    "name": "Channel 128",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/128.m3u8"
+  },
+  {
+    "name": "Channel 138",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/138.m3u8"
+  },
+  {
+    "name": "Channel 139",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/139.m3u8"
+  },
+  {
+    "name": "Channel 563",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/563.m3u8"
+  },
+  {
+    "name": "Channel 564",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/564.m3u8"
+  },
+  {
+    "name": "Channel 567",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/567.m3u8"
+  },
+  {
+    "name": "Channel 621",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/621.m3u8"
+  },
+  {
+    "name": "Channel 622",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/622.m3u8"
+  },
+  {
+    "name": "Channel 623",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/623.m3u8"
+  },
+  {
+    "name": "Channel 624",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/624.m3u8"
+  },
+  {
+    "name": "Channel 625",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/625.m3u8"
+  },
+  {
+    "name": "Channel 634",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/634.m3u8"
+  },
+  {
+    "name": "Channel 644",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/644.m3u8"
+  },
+  {
+    "name": "Channel 680",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/680.m3u8"
+  },
+  {
+    "name": "Channel 687",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/687.m3u8"
+  },
+  {
+    "name": "Channel 696",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/696.m3u8"
+  },
+  {
+    "name": "Channel 700",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/700.m3u8"
+  },
+  {
+    "name": "Channel 702",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/702.m3u8"
+  },
+  {
+    "name": "Channel 706",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/706.m3u8"
+  },
+  {
+    "name": "Channel 708",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/708.m3u8"
+  },
+  {
+    "name": "Channel 709",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/709.m3u8"
+  },
+  {
+    "name": "Channel 715",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/715.m3u8"
+  },
+  {
+    "name": "Channel 731",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/731.m3u8"
+  },
+  {
+    "name": "Channel 732",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/732.m3u8"
+  },
+  {
+    "name": "Channel 735",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/735.m3u8"
+  },
+  {
+    "name": "Channel 736",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/736.m3u8"
+  },
+  {
+    "name": "Channel 741",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/741.m3u8"
+  },
+  {
+    "name": "Channel 742",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/742.m3u8"
+  },
+  {
+    "name": "Channel 1054",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1054.m3u8"
+  },
+  {
+    "name": "Channel 1055",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1055.m3u8"
+  },
+  {
+    "name": "Channel 1079",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1079.m3u8"
+  },
+  {
+    "name": "Channel 1082",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1082.m3u8"
+  },
+  {
+    "name": "Channel 1117",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1117.m3u8"
+  },
+  {
+    "name": "Channel 1853",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1853.m3u8"
+  },
+  {
+    "name": "Channel 1854",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1854.m3u8"
+  },
+  {
+    "name": "Channel 1859",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1859.m3u8"
+  },
+  {
+    "name": "Channel 1860",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1860.m3u8"
+  },
+  {
+    "name": "Channel 1906",
+    "url": "http://103.236.179.86:80/live/rictms/rictms/1906.m3u8"
+  }
+]
