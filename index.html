@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web TV</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Hls.js library -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
   <div class="tv-container">
     <div class="tv-frame">
-      <video id="tvPlayer" autoplay controls></video>
+      <video id="tvPlayer" controls></video>
+      <button id="startBtn" class="start-btn">▶️ Start TV</button>
 
-      <!-- On-screen overlay -->
+      <!-- Overlay -->
       <div class="overlay" id="overlay">
         <div id="overlayChannel">Channel 1</div>
         <div id="overlayVolume">Volume: 50%</div>
       </div>
 
-      <!-- Controls -->
       <div class="controls">
         <button id="prevChannel">⏮️</button>
         <button id="nextChannel">⏭️</button>
@@ -29,97 +28,100 @@
     </div>
   </div>
 
-  <script>
-    let channels = [];
-    let currentIndex = 0;
-    const tvPlayer = document.getElementById('tvPlayer');
-    const overlay = document.getElementById('overlay');
-    const overlayChannel = document.getElementById('overlayChannel');
-    const overlayVolume = document.getElementById('overlayVolume');
+<script>
+let channels = [];
+let currentIndex = 0;
+const tvPlayer = document.getElementById('tvPlayer');
+const overlay = document.getElementById('overlay');
+const overlayChannel = document.getElementById('overlayChannel');
+const overlayVolume = document.getElementById('overlayVolume');
+const startBtn = document.getElementById('startBtn');
 
-    // Load channels.json
-    fetch('channels.json')
-      .then(res => res.json())
-      .then(data => {
-        channels = data;
-        if (channels.length > 0) loadChannel(0);
-      });
+// Load channels
+fetch('channels.json')
+  .then(res => res.json())
+  .then(data => {
+    channels = data;
+    if (channels.length > 0) overlayChannel.textContent = channels[0].name;
+  });
 
-    function showOverlay() {
-      overlay.style.opacity = 1;
-      clearTimeout(overlay.timeout);
-      overlay.timeout = setTimeout(() => overlay.style.opacity = 0, 2000);
-    }
+// Show overlay
+function showOverlay() {
+  overlay.style.opacity = 1;
+  clearTimeout(overlay.timeout);
+  overlay.timeout = setTimeout(() => overlay.style.opacity = 0, 2000);
+}
 
-    function loadChannel(index) {
-      if (!channels.length) return;
-      currentIndex = index;
-      const url = channels[index].url;
-      overlayChannel.textContent = channels[index].name;
-      showOverlay();
+// Load channel using Hls.js
+function loadChannel(index) {
+  if (!channels.length) return;
+  currentIndex = index;
+  const url = channels[index].url;
+  overlayChannel.textContent = channels[index].name;
+  showOverlay();
 
-      // Use Hls.js if needed
-      if (Hls.isSupported()) {
-        if (window.hls) {
-          window.hls.destroy();
-        }
-        const hls = new Hls();
-        window.hls = hls;
-        hls.loadSource(url);
-        hls.attachMedia(tvPlayer);
-        hls.on(Hls.Events.MANIFEST_PARSED, function() {
-          tvPlayer.play().catch(() => console.log("Autoplay prevented"));
-        });
-      } else if (tvPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-        tvPlayer.src = url;
-        tvPlayer.play().catch(() => console.log("Autoplay prevented"));
-      } else {
-        console.error("HLS not supported");
-      }
-    }
-
-    function nextChannel() {
-      currentIndex = (currentIndex + 1) % channels.length;
-      loadChannel(currentIndex);
-    }
-
-    function prevChannel() {
-      currentIndex = (currentIndex - 1 + channels.length) % channels.length;
-      loadChannel(currentIndex);
-    }
-
-    function volUp() {
-      tvPlayer.volume = Math.min(tvPlayer.volume + 0.1, 1);
-      overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume * 100)}%`;
-      showOverlay();
-    }
-
-    function volDown() {
-      tvPlayer.volume = Math.max(tvPlayer.volume - 0.1, 0);
-      overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume * 100)}%`;
-      showOverlay();
-    }
-
-    // Button events
-    document.getElementById('nextChannel').onclick = nextChannel;
-    document.getElementById('prevChannel').onclick = prevChannel;
-    document.getElementById('volUp').onclick = volUp;
-    document.getElementById('volDown').onclick = volDown;
-
-    // Keyboard controls
-    document.addEventListener('keydown', (e) => {
-      switch(e.key) {
-        case 'ArrowUp': volUp(); break;
-        case 'ArrowDown': volDown(); break;
-        case 'ArrowRight': nextChannel(); break;
-        case 'ArrowLeft': prevChannel(); break;
-        case 'Enter':
-          if(tvPlayer.paused) tvPlayer.play();
-          else tvPlayer.pause();
-          showOverlay();
-          break;
-      }
+  if (Hls.isSupported()) {
+    if (window.hls) window.hls.destroy();
+    const hls = new Hls();
+    window.hls = hls;
+    hls.loadSource(url);
+    hls.attachMedia(tvPlayer);
+    hls.on(Hls.Events.MANIFEST_PARSED, function() {
+      tvPlayer.play().catch(() => console.log("User must start playback"));
     });
-  </script>
+  } else if (tvPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+    tvPlayer.src = url;
+  } else {
+    alert("HLS not supported in this browser");
+  }
+}
+
+// Controls
+function nextChannel() {
+  currentIndex = (currentIndex + 1) % channels.length;
+  loadChannel(currentIndex);
+}
+function prevChannel() {
+  currentIndex = (currentIndex - 1 + channels.length) % channels.length;
+  loadChannel(currentIndex);
+}
+function volUp() {
+  tvPlayer.volume = Math.min(tvPlayer.volume + 0.1, 1);
+  overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume*100)}%`;
+  showOverlay();
+}
+function volDown() {
+  tvPlayer.volume = Math.max(tvPlayer.volume - 0.1, 0);
+  overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume*100)}%`;
+  showOverlay();
+}
+
+// Button events
+document.getElementById('nextChannel').onclick = nextChannel;
+document.getElementById('prevChannel').onclick = prevChannel;
+document.getElementById('volUp').onclick = volUp;
+document.getElementById('volDown').onclick = volDown;
+
+// Keyboard support
+document.addEventListener('keydown', (e) => {
+  switch(e.key) {
+    case 'ArrowUp': volUp(); break;
+    case 'ArrowDown': volDown(); break;
+    case 'ArrowRight': nextChannel(); break;
+    case 'ArrowLeft': prevChannel(); break;
+    case 'Enter':
+      if(tvPlayer.paused) tvPlayer.play();
+      else tvPlayer.pause();
+      showOverlay();
+      break;
+  }
+});
+
+// Start button
+startBtn.addEventListener('click', () => {
+  startBtn.style.display = 'none';
+  if (channels.length > 0) loadChannel(0);
+});
+</script>
 </body>
 </html>
