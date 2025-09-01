@@ -10,11 +10,10 @@
 <body>
   <div class="tv-container">
     <div class="tv-frame">
-      <!-- TV Logo -->
-      <img src="ragetv.png" alt="TV Logo" class="tv-logo">
-
       <video id="tvPlayer" autoplay controls></video>
-      <button id="startBtn" class="start-btn">▶️ Start TV</button>
+
+      <!-- Start button -->
+      <button id="startBtn" class="start-btn">▶️ Power On</button>
 
       <!-- Overlay -->
       <div class="overlay" id="overlay">
@@ -22,6 +21,10 @@
         <div id="overlayVolume">Volume: 50%</div>
       </div>
 
+      <!-- TV brand logo -->
+      <img src="ragetv.png" alt="RageTV Logo" class="tv-logo">
+
+      <!-- Controls -->
       <div class="controls">
         <button id="prevChannel">⏮️</button>
         <button id="nextChannel">⏭️</button>
@@ -80,24 +83,10 @@ function loadChannel(index) {
 }
 
 // Controls
-function nextChannel() {
-  currentIndex = (currentIndex + 1) % channels.length;
-  loadChannel(currentIndex);
-}
-function prevChannel() {
-  currentIndex = (currentIndex - 1 + channels.length) % channels.length;
-  loadChannel(currentIndex);
-}
-function volUp() {
-  tvPlayer.volume = Math.min(tvPlayer.volume + 0.1, 1);
-  overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume*100)}%`;
-  showOverlay();
-}
-function volDown() {
-  tvPlayer.volume = Math.max(tvPlayer.volume - 0.1, 0);
-  overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume*100)}%`;
-  showOverlay();
-}
+function nextChannel() { currentIndex = (currentIndex + 1) % channels.length; loadChannel(currentIndex); }
+function prevChannel() { currentIndex = (currentIndex - 1 + channels.length) % channels.length; loadChannel(currentIndex); }
+function volUp() { tvPlayer.volume = Math.min(tvPlayer.volume + 0.1, 1); overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume*100)}%`; showOverlay(); }
+function volDown() { tvPlayer.volume = Math.max(tvPlayer.volume - 0.1, 0); overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume*100)}%`; showOverlay(); }
 
 // Button events
 document.getElementById('nextChannel').onclick = nextChannel;
