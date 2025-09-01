@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web TV</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="tv-container">
+    <div class="tv-frame">
+      <video id="tvPlayer" autoplay></video>
+
+      <!-- On-screen overlay -->
+      <div class="overlay" id="overlay">
+        <div id="overlayChannel">Channel 1</div>
+        <div id="overlayVolume">Volume: 50%</div>
+      </div>
+
+      <!-- Numeric input overlay -->
+      <div class="numeric-input" id="numericInput"></div>
+
+      <!-- On-screen keypad -->
+      <div class="keypad" id="keypad">
+        <button data-num="1">1</button>
+        <button data-num="2">2</button>
+        <button data-num="3">3</button>
+        <button data-num="4">4</button>
+        <button data-num="5">5</button>
+        <button data-num="6">6</button>
+        <button data-num="7">7</button>
+        <button data-num="8">8</button>
+        <button data-num="9">9</button>
+        <button data-num="0">0</button>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button id="prevChannel">⏮️</button>
+        <button id="nextChannel">⏭️</button>
+        <button id="volDown">🔉</button>
+        <button id="volUp">🔊</button>
+      </div>
+
+      <div class="channel-list" id="channelList"></div>
+    </div>
+  </div>
+
+  <script>
+    let channels = [];
+    let currentIndex = 0;
+    const tvPlayer = document.getElementById('tvPlayer');
+    const overlay = document.getElementById('overlay');
+    const overlayChannel = document.getElementById('overlayChannel');
+    const overlayVolume = document.getElementById('overlayVolume');
+    const channelList = document.getElementById('channelList');
+    const numericInput = document.getElementById('numericInput');
+    const keypad = document.getElementById('keypad');
+
+    let inputBuffer = '';
+    let inputTimeout;
+
+    // Load channels
+    fetch('channels.json')
+      .then(res => res.json())
+      .then(data => {
+        channels = data;
+        displayChannelList();
+        loadChannel(0);
+      });
+
+    function showOverlay() {
+      overlay.style.opacity = 1;
+      clearTimeout(overlay.timeout);
+      overlay.timeout = setTimeout(() => overlay.style.opacity = 0, 2000);
+    }
+
+    function loadChannel(index) {
+      if (!channels.length) return;
+      currentIndex = index;
+      tvPlayer.src = channels[index].url;
+      overlayChannel.textContent = channels[index].name;
+      highlightActiveChannel();
+      showOverlay();
+    }
+
+    function nextChannel() {
+      currentIndex = (currentIndex + 1) % channels.length;
+      loadChannel(currentIndex);
+    }
+
+    function prevChannel() {
+      currentIndex = (currentIndex - 1 + channels.length) % channels.length;
+      loadChannel(currentIndex);
+    }
+
+    function volUp() {
+      tvPlayer.volume = Math.min(tvPlayer.volume + 0.1, 1);
+      overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume * 100)}%`;
+      showOverlay();
+    }
+
+    function volDown() {
+      tvPlayer.volume = Math.max(tvPlayer.volume - 0.1, 0);
+      overlayVolume.textContent = `Volume: ${Math.round(tvPlayer.volume * 100)}%`;
+      showOverlay();
+    }
+
+    function displayChannelList() {
+      channels.forEach((channel, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = channel.name;
+        btn.onclick = () => loadChannel(index);
+        btn.classList.add('channel-btn');
+        channelList.appendChild(btn);
+      });
+    }
+
+    function highlightActiveChannel() {
+      const buttons = document.querySelectorAll('.channel-btn');
+      buttons.forEach((btn, i) => btn.classList.toggle('active', i === currentIndex));
+    }
+
+    // Button events
+    document.getElementById('nextChannel').onclick = nextChannel;
+    document.getElementById('prevChannel').onclick = prevChannel;
+    document.getElementById('volUp').onclick = volUp;
+    document.getElementById('volDown').onclick = volDown;
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+      switch(e.key) {
+        case 'ArrowUp': volUp(); break;
+        case 'ArrowDown': volDown(); break;
+        case 'ArrowRight': nextChannel(); break;
+        case 'ArrowLeft': prevChannel(); break;
+        case 'Enter':
+          if(tvPlayer.paused) tvPlayer.play();
+          else tvPlayer.pause();
+          showOverlay();
+          break;
+        default:
+          if (e.key >= '0' && e.key <= '9') showNumericInput(e.key);
+      }
+    });
+
+    // Numeric input function
+    function showNumericInput(number) {
+      inputBuffer += number;
+      numericInput.textContent = inputBuffer;
+      numericInput.style.opacity = 1;
+
+      clearTimeout(inputTimeout);
+      inputTimeout = setTimeout(() => {
+        const index = parseInt(inputBuffer, 10) - 1;
+        if (!isNaN(index) && index >= 0 && index < channels.length) {
+          loadChannel(index);
+        }
+        inputBuffer = '';
+        numericInput.style.opacity = 0;
+      }, 1000);
+    }
+
+    // Keypad button clicks
+    keypad.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => showNumericInput(btn.dataset.num));
+    });
+  </script>
+</body>
+</html>
